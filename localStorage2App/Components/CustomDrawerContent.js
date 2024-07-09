@@ -25,17 +25,11 @@ function CustomDrawerContent(props) {
 
 const styles = StyleSheet.create({
   drawerHeader: {
-    height: 150,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f50057'
-  },
+  }  
  
-  drawerHeaderText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold'
-  }
+  
 });
 
 export default CustomDrawerContent;
