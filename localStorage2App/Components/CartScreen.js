@@ -35,17 +35,17 @@ export default function CartScreen({ route }) {
   };
 
   const calculateTotal = () => {
-    return items.reduce((total, item) => total + parseFloat(item.price.slice(1)), 0);
+    return items.reduce((total, item) => total + (isNaN(item.price) ? 0 : item.price), 0);
   };
 
   const renderItem = ({ item, index }) => (
     <View style={styles.cartItem}>
       <View style={styles.itemDetailsContainer}>
-        <Image source={item.image} style={styles.itemImage} />
+        <Image source={{ uri: item.image }} style={styles.itemImage} />
         <View style={styles.itemDetails}>
           <Text style={styles.itemTitle}>{item.title}</Text>
-          <Text style={styles.itemType}>{item.type}</Text>
-          <Text style={styles.itemPrice}>{item.price}</Text>
+          <Text style={styles.itemType}>{item.category}</Text>
+          <Text style={styles.itemPrice}>{`$${item.price}`}</Text>
           <TouchableOpacity onPress={() => removeFromCart(index)}>
             <Image source={require('../assets/remove.png')} style={styles.removeItemImage} />
           </TouchableOpacity>
@@ -71,7 +71,7 @@ export default function CartScreen({ route }) {
       <FlatList
         data={items}
         renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(item, index) => index}
         style={styles.scrollViewContent}
       />
       <View style={styles.footerContent}>
@@ -143,8 +143,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemImage: {
+    width: 100,
+    height: 100,
     marginRight: 15,
-    
+    resizeMode: 'contain',
   },
   itemDetails: {
     flex: 1,
@@ -164,7 +166,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 20,
     height: 20,
-    left:150
   },
   footerContent: {
     backgroundColor: '#fff',
