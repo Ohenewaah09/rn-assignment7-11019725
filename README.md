@@ -55,3 +55,8 @@
 
 ![ProductDescription](localStorage2App/assets/productDescription1.jpg)
 ![ProductDescription](localStorage2App/assets/productDescription2.jpg)
+
+### CartItems
+
+![CartItem](localStorage2App/assets/cart1.jpg)
+![CartItem](localStorage2App/assets/cart2.jpg)
