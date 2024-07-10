@@ -6,30 +6,35 @@ function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerHeader}>
-       <Text>Adaiah Tsorblewu</Text>
+        <Image source={require('../assets/Close.png')} />
+        <Text style={styles.drawerHeaderText}>Adaiah Tsorblewu</Text>
       </View>
       <DrawerItemList {...props} />
-      <DrawerItem
-        label="Help"
-        onPress={() => alert('Link to help')}
-      />
-      <DrawerItem label="Store"/>
-      <DrawerItem label="Locations"/>
-      <DrawerItem label="Blog"/>
-      <DrawerItem label="Jewelery"/>
-      <DrawerItem label="Electronic"/>
-      <DrawerItem label="Clothing"/>
+      <DrawerItem label="Store"  />
+      <DrawerItem label="Locations" />
+      <DrawerItem label="Blog" />
+      <DrawerItem label="Jewelry"  />
+      <DrawerItem label="Electronic"  />
+      <DrawerItem label="Clothing"  />
     </DrawerContentScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   drawerHeader: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  }  
- 
-  
+    // flexDirection: 'row',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    paddingVertical: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    marginTop:40,
+  },
+  drawerHeaderText: {
+    marginLeft: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
 
 export default CustomDrawerContent;

@@ -3,16 +3,18 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ShopItem = ({ image, title, type, price, addToCart, navigateToProductDetail }) => {
+const ShopItem = ({ item, addToCart, navigateToProductDetail }) => {
     return (
         <View style={styles.shoppingContainer}>
-            <Image source={{ uri: image }} style={styles.itemImage} />
-            <TouchableOpacity onPress={navigateToProductDetail} style={styles.addCircleContainer}>
+            <Image source={{ uri: item.image }} style={styles.itemImage} />
+            <TouchableOpacity onPress={() => addToCart(item)} style={styles.addCircleContainer}>
                 <Image source={require('../assets/add_circle.png')} style={styles.addCircle} />
             </TouchableOpacity>
-            <Text style={styles.titleText}>{title}</Text>
-            <Text style={styles.typeText}>{type}</Text>
-            <Text style={styles.priceText}>{`$${price}`}</Text>
+            <TouchableOpacity onPress={() => navigateToProductDetail(item)}>
+                <Text style={styles.titleText}>{item.title}</Text>
+            </TouchableOpacity>
+            <Text style={styles.typeText}>{item.category}</Text>
+            <Text style={styles.priceText}>{`$${item.price}`}</Text>
         </View>
     );
 };
@@ -102,22 +104,20 @@ export default function HomeScreen({ navigation }) {
             </View>
 
             <FlatList
-                data={products}
-                renderItem={({ item }) => (
-                    <ShopItem
-                        image={item.image}
-                        title={item.title}
-                        type={item.category}
-                        price={item.price}
-                        addToCart={() => addToCart(item)}
-                        navigateToProductDetail={() => navigateToProductDetail(item)}
-                    />
-                )}
-                keyExtractor={item => item.id.toString()}
-                numColumns={2}
-                contentContainerStyle={styles.flatListContainer}
-                columnWrapperStyle={styles.columnWrapper}
-            />
+    data={products}
+    renderItem={({ item }) => (
+        <ShopItem
+            item={item}
+            addToCart={addToCart}
+            navigateToProductDetail={navigateToProductDetail}
+        />
+    )}
+    keyExtractor={(item, index) => item.id ? item.id.toString() : index.toString()}
+    numColumns={2}
+    contentContainerStyle={styles.flatListContainer}
+    columnWrapperStyle={styles.columnWrapper}
+/>
+
 
             <StatusBar style="auto" />
         </View>
