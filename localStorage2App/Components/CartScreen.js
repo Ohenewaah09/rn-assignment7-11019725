@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function CartScreen() {
@@ -20,6 +20,16 @@ export default function CartScreen() {
         loadCartItems();
     }, []);
 
+    const removeFromCart = async (id) => {
+        const updatedCartItems = cartItems.filter(item => item.id !== id);
+        setCartItems(updatedCartItems);
+        try {
+            await AsyncStorage.setItem('@cart_items', JSON.stringify(updatedCartItems));
+        } catch (error) {
+            console.error('Failed to save cart items', error);
+        }
+    };
+
     return (
         <View style={styles.container}>
             <FlatList
@@ -31,6 +41,9 @@ export default function CartScreen() {
                         <View style={styles.itemDetails}>
                             <Text style={styles.itemTitle}>{item.title}</Text>
                             <Text style={styles.itemPrice}>{`$${item.price}`}</Text>
+                            <TouchableOpacity onPress={() => removeFromCart(item.id)}>
+                                <Image source={require('../assets/remove.png')} style={styles.removeImage} />
+                            </TouchableOpacity>
                         </View>
                     </View>
                 )}
@@ -70,5 +83,10 @@ const styles = StyleSheet.create({
     itemPrice: {
         fontSize: 16,
         color: 'red',
+    },
+    removeImage: {
+        width: 24,
+        height: 24,
+        marginTop: 10,
     },
 });

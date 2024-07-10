@@ -91,7 +91,7 @@ export default function HomeScreen({ navigation }) {
                 </View>
 
                 <View style={styles.secondHeaderList}>
-                    <Text style={styles.headerText}>O U R S T O R Y</Text>
+                    <Text style={styles.headerText}>O U R  S T O R Y</Text>
                     <View style={styles.List_FilterImage}>
                         <View style={styles.ListImage}>
                             <Image source={require('../assets/Listview.png')} />

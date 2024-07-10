@@ -23,9 +23,16 @@ function HomeStackNavigator() {
 
 function MyDrawer() {
   return (
-    <Drawer.Navigator initialRouteName="HomeStack" drawerContent={(props) => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen name="HomeStack" component={HomeStackNavigator} options={{ headerShown: false }} />
-      <Drawer.Screen name="Cart" component={CartScreen} options={{ headerShown: false }} />
+    <Drawer.Navigator
+      initialRouteName="HomeStack"
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false,
+        drawerLabelStyle: styles.drawerText,
+      }}
+    >
+      <Drawer.Screen name="Store" component={HomeStackNavigator} />
+      <Drawer.Screen name="Locations" component={CartScreen} />
     </Drawer.Navigator>
   );
 }
@@ -44,5 +51,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  drawerText: {
+    fontSize: 20,
+    fontWeight: '400',
   },
 });

@@ -52,19 +52,19 @@ export default function ProductDetailScreen({ route, navigation }) {
                 <View style={styles.DescriptionInfo}>
                     <View style={styles.DescriptionInfo1}>
                         <Image source={require('../assets/Do Not Bleach.png')} style={styles.DescriptionImage} />
-                        <Text>Do Not Bleach</Text>
+                        <Text style={styles.TEXTStyle}>Do Not Bleach</Text>
                     </View>
                     <View style={styles.DescriptionInfo2}>
                         <Image source={require('../assets/Do Not Tumble Dry.png')} style={styles.DescriptionImage} />
-                        <Text>Do Not Tumble Dry</Text>
+                        <Text style={styles.TEXTStyle}>Do Not Tumble Dry</Text>
                     </View>
                     <View style={styles.DescriptionInfo3}>
                         <Image source={require('../assets/Do Not Wash.png')} style={styles.DescriptionImage} />
-                        <Text>Dry clean with tetrachloroethylene</Text>
+                        <Text style={styles.TEXTStyle}>Dry clean with tetrachloroethylene</Text>
                     </View>
                     <View style={styles.DescriptionInfo4}>
                         <Image source={require('../assets/Iron Low Temperature.png')} style={styles.DescriptionImage} />
-                        <Text>Iron at a maximum of 110oC/230oF</Text>
+                        <Text style={styles.TEXTStyle}>Iron at a maximum of 110oC/230oF</Text>
                     </View>
 
                     <View style={styles.lineContainer}>
@@ -74,9 +74,9 @@ export default function ProductDetailScreen({ route, navigation }) {
                     <View style={styles.ShippingInfo}>
                         <Image source={require('../assets/Shipping.png')} />
                         <View>
-                            <Text>Free Flat Rate Shipping</Text>
-                            <Text>Estimated to be delivered on</Text>
-                            <Text>09/11/2021 - 12/11/2021.</Text>
+                        <Text style={styles.TEXTStylez}>Free Flat Rate Shipping</Text>
+                            <Text style={styles.TEXTStyle}>Estimated to be delivered on</Text>
+                            <Text style={styles.TEXTStyle}>09/11/2021 - 12/11/2021.</Text>
                         </View>
                         <View>
                             <Image source={require('../assets/Up.png')} />
@@ -148,20 +148,25 @@ const styles = StyleSheet.create({
     },
     productDescription: {
         fontSize: 16,
-        color: '#000',
+        color: '#A9A9A9',
     },
     DescriptionInfo1: {
         flexDirection: 'row',
         marginTop: 30,
+        color: '#A9A9A9',
+        fontSize:18
     },
     DescriptionInfo2: {
         flexDirection: 'row',
+        color: '#A9A9A9',
     },
     DescriptionInfo3: {
         flexDirection: 'row',
+        color: '#A9A9A9',
     },
     DescriptionInfo4: {
         flexDirection: 'row',
+        color: '#A9A9A9',
     },
     lineContainer: {
         flexDirection: 'row',
@@ -203,4 +208,12 @@ const styles = StyleSheet.create({
         height: 30,
         width: 30,
     },
+    TEXTStyle:{
+        color:'#A9A9A9',
+        fontSize:16
+    },
+    TEXTStylez:{
+        fontSize:16,
+        fontWeight:'400'
+    }
 });
